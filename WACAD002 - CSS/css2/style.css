@@ -1,0 +1,29 @@
+body {
+    background-image: url(background.jpeg);
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+h2 {
+    color: white;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+div {
+    max-width: 350px;
+    height: auto;
+    display: inline-block;
+    margin: 100px 5% 50px 5%;
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    border: 10px solid blue;
+}
