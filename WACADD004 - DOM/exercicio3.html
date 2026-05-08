@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+  </head>
+  <body>
+    <div id="organizador">
+      <h3>Tarefas Pendentes:</h3>
+      <ul id="lista-pendentes">
+        <li id="tarefa-carro">Lavar o carro</li>
+        <li id="tarefa-js">Estudar JavaScript</li>
+        <li id="tarefa-livro">Ler livro</li>
+        <li id="tarefa-roupas">Dobrar as roupas</li>
+      </ul>
+
+      <h3>Tarefas Concluídas:</h3>
+      <ul id="lista-concluidas">
+        <li>Fazer compras</li>
+      </ul>
+    </div>
+
+    <script>
+        const listaConcluidas = document.getElementById("lista-concluidas");
+        const tarefaJs = document.getElementById("tarefa-js");
+        const novaTarefa = document.createElement("li");
+
+        document.getElementById("tarefa-carro").remove();
+        document.getElementById("tarefa-livro").innerText = "[URGENTE] Ler livro";
+        listaConcluidas.appendChild(tarefaJs);
+        novaTarefa.innerText = "Fazer exercícios";
+        document.getElementById("lista-pendentes").appendChild(novaTarefa);
+
+    </script>
+  </body>
+</html>
