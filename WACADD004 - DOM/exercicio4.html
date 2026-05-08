@@ -23,16 +23,16 @@
         const lista = document.getElementById("lista-tarefas");
         const input = document.getElementById("input-nova-tarefa");
 
-        botao.addEventListener("click", function(){
+        botao.addEventListener("click", (event) =>{
             const texto = input.value;
 
             if (texto === ""){
                 return;
             }
 
-            const novaTarefa = document.createElement("li");
-            novaTarefa.innerText = texto;
-            lista.appendChild(novaTarefa);
+            const item = document.createElement("li");
+            item.innerText = input.value;
+            lista.appendChild(item);
             input.value = "";
         });
     </script>
