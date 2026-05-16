@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">CineList Admin</a>
+        
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="offcanvas" data-bs-target="#menuLateral">Menu</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Sair</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+l
+    <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="menuLateral" aria-labelledby="menuLateralLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="menuLateralLabel">CineList</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body p-0">
+            <div class="list-group list-group-flush">
+                <button type="button" class="list-group-item list-group-item-action bg-dark text-white">Dashboard</button>
+                <button type="button" class="list-group-item list-group-item-action active" aria-current="true">
+                    Catálogo de filmes
+                </button>
+                <button type="button" class="list-group-item list-group-item-action bg-dark text-white">Gerenciar usuários</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="container">
+        <h2>Meu Catálogo</h2>
+
+        <div class="d-flex justify-content-end">
+             <button class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#adicionar-filme">Adicionar Filme</button>
+        </div>
+       
+        <table class="table table-hover">
+            <thead class="table-dark">
+                <th>ID</th>
+                <th>Título</th>
+                <th>Gênero</th>
+                <th>Status</th>
+                <th>Ações</th>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Jhon Wick</td>
+                    <td>Ação</td>
+                    <td>
+                        <span class="badge text-bg-success"> Assistido </span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary">Editar</button>
+                        <button type="button" class="btn btn-outline-danger">Excluir</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>A noiva cadaver</td>
+                    <td>Animação</td>
+                    <td>
+                        <span class="badge text-bg-warning">Pendente</span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary">Editar</button>
+                        <button type="button" class="btn btn-outline-danger">Excluir</button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>As férias da minha vida</td>
+                    <td>Comédia</td>
+                    <td>
+                        <span class="badge text-bg-warning">Pendente</span>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-outline-primary">Editar</button>
+                        <button type="button" class="btn btn-outline-danger">Excluir</button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+    </main>
+    
+    <div class="modal fade" tabindex="-1" id="adicionar-filme">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Adicionar Filme</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <label for="genero" class="form-label">Título</label>
+                        <input id="genero" class="form-control mb-2">
+
+                        <select class="form-select">
+                            <option value="">Ação</option>
+                            <option value="">Animação</option>
+                            <option value="">Comédia</option>
+                            <option value="">Terror</option>
+                            <option value="">Fantasia</option>
+                            <option value="">Ficção Ciêntifica</option>
+
+                        </select>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>
