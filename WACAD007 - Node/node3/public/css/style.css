@@ -1,0 +1,21 @@
+body {
+    background-color: rgb(255, 240, 174);
+    padding: 0 0 1em;
+    display: flex;
+    align-items: flex-start;
+}
+
+#container{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10em;
+}
+
+#lorem{
+    width: 50%;
+    margin-left: auto;
+    text-align: justify;
+}
