@@ -14,13 +14,16 @@ const server = http.createServer((req, res) => {
 
     if(req.url === "/"){
     fs.readdir(`${process.cwd()}/${FOLDER}`, (err, files) => {
+        if (err) {
+            return res.end("Não foi possível encontrar o diretório")
+        }
         files.forEach(f => res.write((createLink(f))))
         res.end()
     })
     
     } else {
         if(req.url === "/favicon.ico") return res.end()
-        fs.readFile(`${process.cwd()}/public${req.url}`, (err, content) => {
+        fs.readFile(`${process.cwd()}/public${req.url}`, "utf-8", (err, content) => {
             if(err){
                 return res.end("Não foi possível encontrar o arquivo")
             }

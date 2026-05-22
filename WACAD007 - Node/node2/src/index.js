@@ -22,7 +22,7 @@ const server = http.createServer((req, res) => {
     
     } else {
         if(req.url === "/favicon.ico") return res.end()
-        fs.readFile(`${process.cwd()}/public${req.url}`, (err, content) => {
+        fs.readFile(`${process.cwd()}/public${req.url}`, "utf-8", (err, content) => {
             if(err){
                 return res.end("Não foi possível encontrar o arquivo")
             }
