@@ -1,6 +1,6 @@
 "use strict";
 var _a;
-const task = [];
+let task = [];
 const form = document.getElementById("task-form");
 const inputId = document.getElementById("task-id");
 const titleInput = document.getElementById("title");
@@ -70,11 +70,8 @@ function renderTasks() {
     });
 }
 function deleteTask(id) {
-    const index = task.findIndex(t => t[0] === id);
-    if (index !== -1) {
-        task.splice(index, 1);
-        renderTasks();
-    }
+    task = task.filter(t => t[0] !== id);
+    renderTasks();
 }
 function editTask(id) {
     var _a, _b;
