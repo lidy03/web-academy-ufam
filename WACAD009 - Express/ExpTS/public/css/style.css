@@ -1,0 +1,9 @@
+:root{
+    --primary: red;
+    --secondary: #45a334;
+}
+
+h1{
+    color: var(--primary);
+    background-color: var(--secondary);
+}

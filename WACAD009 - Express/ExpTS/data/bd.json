@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Celular",
+      "price": 100,
+      "stock": 10
+    },
+    {
+      "id": "2",
+      "name": "Tablet",
+      "price": 200,
+      "stock": 8
+    },
+    {
+      "id": "3",
+      "name": "Monitor",
+      "price": 150,
+      "stock": 12
+    },
+    {
+      "name": "Celular2",
+      "price": "100",
+      "stock": "10",
+      "id": "86-QZuzmgrA"
+    },
+    {
+      "name": "Monitor 5",
+      "price": "150",
+      "stock": "12",
+      "id": "XztP0cHrVrc"
+    },
+    {
+      "name": "Monitor 10",
+      "price": "150",
+      "stock": "12",
+      "id": "njcx_qZjfmQ"
+    },
+    {
+      "name": "tablet 7",
+      "price": "8520",
+      "stock": "96",
+      "id": "WLwxfW49S70"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
