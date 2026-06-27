@@ -1,0 +1,138 @@
+//This is your Prisma schema file,
+//learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+//Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model Usuario {
+  id              Int               @id @default(autoincrement())
+  nome            String            @db.VarChar(50)
+  interesse       String            @db.VarChar(45)
+  bio             String            @db.VarChar(200)
+  data_nascimento DateTime          @db.Date
+  cidade          String            @db.VarChar(45)
+  estado          String            @db.Char(2)
+  pais            String            @db.VarChar(45)
+  grupo           Grupo[]
+  postagem        Postagem[]
+  membro_grupo    Membros_Grupo[]
+  membro_conversa Membro_Conversa[]
+  curtida         Curtida[]
+  comentario      Comentario[]
+  mensagem        Mensagem[]
+  conexao         Conexao[]         @relation("Usuario_Conexao")
+  conexao_amigos  Conexao[]         @relation("Amigo_Conexao")
+}
+
+model Conexao {
+  id           Int      @id @default(autoincrement())
+  data_conexao DateTime @default(now())
+  usuario_id   Int
+  amigo_id     Int
+  usuario      Usuario  @relation("Usuario_Conexao", fields: [usuario_id], references: [id])
+  amigo        Usuario  @relation("Amigo_Conexao", fields: [amigo_id], references: [id])
+
+  @@unique([usuario_id, amigo_id])
+}
+
+model Grupo {
+  id           Int             @id @default(autoincrement())
+  data_criacao DateTime        @default(now())
+  nome         String          @db.VarChar(45)
+  descricao    String          @db.VarChar(45)
+  criador_id   Int
+  criador      Usuario         @relation(fields: [criador_id], references: [id])
+  membro_grupo Membros_Grupo[]
+  postagem     Postagem[]
+}
+
+model Membros_Grupo {
+  id           Int      @id @default(autoincrement())
+  data_entrada DateTime @default(now())
+  usuario_id   Int
+  grupo_id     Int
+  usuario      Usuario  @relation(fields: [usuario_id], references: [id])
+  grupo        Grupo    @relation(fields: [grupo_id], references: [id])
+
+  @@unique([usuario_id, grupo_id])
+}
+
+model Postagem {
+  id         Int          @id @default(autoincrement())
+  data_hora  DateTime     @default(now())
+  conteudo   String       @db.Text
+  usuario_id Int
+  grupo_id   Int?
+  usuario    Usuario      @relation(fields: [usuario_id], references: [id])
+  grupo      Grupo?       @relation(fields: [grupo_id], references: [id])
+  midia      Midia[]
+  comentario Comentario[]
+  curtida    Curtida[]
+}
+
+model Midia {
+  id          Int      @id @default(autoincrement())
+  url         String   @db.VarChar(45)
+  tipo        String   @db.VarChar(45)
+  postagem_id Int
+  postagem    Postagem @relation(fields: [postagem_id], references: [id])
+}
+
+model Comentario {
+  id          Int      @id @default(autoincrement())
+  conteudo    String   @db.VarChar(140)
+  data_hora   DateTime @default(now())
+  usuario_id  Int
+  postagem_id Int
+  usuario     Usuario  @relation(fields: [usuario_id], references: [id])
+  postagem    Postagem @relation(fields: [postagem_id], references: [id])
+}
+
+model Curtida {
+  id          Int      @id @default(autoincrement())
+  postagem_id Int
+  usuario_id  Int
+  postagem    Postagem @relation(fields: [postagem_id], references: [id])
+  usuario     Usuario  @relation(fields: [usuario_id], references: [id])
+
+  @@unique([usuario_id, postagem_id])
+}
+
+model Mensagem {
+  id          Int      @id @default(autoincrement())
+  data_hora   DateTime @default(now())
+  conteudo    String   @db.Text
+  usuario_id  Int
+  conversa_id Int
+  usuario     Usuario  @relation(fields: [usuario_id], references: [id])
+  conversa    Conversa @relation(fields: [conversa_id], references: [id])
+}
+
+model Conversa {
+  id              Int               @id @default(autoincrement())
+  data_criacao    DateTime          @default(now())
+  tipo            TipoConversa
+  mensagem        Mensagem[]
+  membro_conversa Membro_Conversa[]
+}
+
+enum TipoConversa {
+  privada
+  grupo
+}
+
+model Membro_Conversa {
+  id          Int      @id @default(autoincrement())
+  usuario_id  Int
+  conversa_id Int
+  usuario     Usuario  @relation(fields: [usuario_id], references: [id])
+  conversa    Conversa @relation(fields: [conversa_id], references: [id])
+}
