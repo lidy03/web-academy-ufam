@@ -7,4 +7,5 @@ docker run --name frontend --network net-lab4 -p 3000:3000 frontend-lab4
 
 compose:
 docker-compose up -d
+docker logs backend-webacademy -f
 
