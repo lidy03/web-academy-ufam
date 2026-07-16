@@ -1,0 +1,30 @@
+
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dockerfile-backend
+    container_name: backend-webacademy
+    ports:
+      - "4000:4000" 
+    networks:
+      - net-web-remote
+
+  frontend:
+    build:
+      context: .
+      dockerfile: dockerfile-frontend
+    container_name: frontend-webacademy 
+    ports:
+      - "3000:3000"
+    networks:
+      - net-web-remote
+    depends_on:
+      - backend
+    links:
+      - backend:back
+
+networks:
+  net-web-remote:
+    driver: bridge

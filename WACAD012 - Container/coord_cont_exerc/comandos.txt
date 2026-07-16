@@ -1,0 +1,10 @@
+docker build -t backend-lab4 -f dockerfile-backend .
+docker build -t frontend-lab4 -f dockerfile-frontend .
+docker network create net-lab4
+docker run --name back --network net-lab4 -p 4000:4000 backend-lab4
+docker run --name frontend --network net-lab4 -p 3000:3000 frontend-lab4
+
+
+compose:
+docker-compose up -d
+
