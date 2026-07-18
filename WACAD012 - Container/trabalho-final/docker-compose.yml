@@ -1,0 +1,64 @@
+services:
+  mysql:
+    image: mysql:8.4.4
+    container_name: webacademy_mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: senhasegura
+      MYSQL_DATABASE: livraria
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./bd:/docker-entrypoint-initdb.d
+    networks:
+      - webacademy
+
+  backend:
+    build:
+      context: ./backend
+    container_name: webacademy_backend
+    restart: always
+    ports:
+      - "4444:4444"
+    volumes:
+      - backend_logs:/app/log
+    depends_on:
+      - mysql
+    networks:
+      - webacademy
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: webacademy_frontend
+    restart: always
+    ports:
+      - "8000:80"
+    depends_on:
+      - backend
+    networks:
+      - webacademy
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: webacademy_phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: senhasegura
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql
+    networks:
+      - webacademy
+
+volumes:
+  mysql_data:
+  backend_logs:
+
+networks:
+  webacademy:
+    driver: bridge
