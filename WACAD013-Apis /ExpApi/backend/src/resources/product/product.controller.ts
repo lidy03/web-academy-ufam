@@ -2,7 +2,7 @@ import type { Request, Response } from "express";
 import { StatusCodes} from "http-status-codes";
 import type { CreateProductDto, UpdateProductDto } from "./product.types.js";
 import { CreateProduct, getProduct, getProducts, removeProduct, updateProduct } from "./product.service.js";
-import { productErrors } from "./product.erros.js";
+import { productErrors } from "./product.errors.js";
 
 const index = async (req: Request, res: Response) => {
     try{
